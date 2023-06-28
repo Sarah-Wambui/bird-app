@@ -14,6 +14,11 @@ db.init_app(app)
 
 api = Api(app)
 
+class Index(Resource):
+    def get(self):
+        return f"<h1>Welcome to my first Deployed Flask App!<h1>"
+api.add_resource(Index, "/")
+
 class Birds(Resource):
     def get(self):
         birds = [bird.to_dict() for bird in Bird.query.all()]
